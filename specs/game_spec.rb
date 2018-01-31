@@ -54,6 +54,20 @@ class GameTest < MiniTest::Test
     assert_equal(false, @game.correct_word?("cheese"))
   end
 
+  def test_guess_letter__not_present
+    @game.guess_letter("z")
+    assert_equal("** *****", @hidden_word.display)
+    assert_equal(5, @player.lives)
+    assert_equal(["z"], @game.guessed_letters)
+  end
+
+  def test_guess_letter__is_present
+    @game.guess_letter("h")
+    assert_equal("h* *h***", @hidden_word.display)
+    assert_equal(6, @player.lives)
+    assert_equal(["h"], @game.guessed_letters)
+  end
+
   # ... in midst of building
   def test_parse_guess
     @game.parse_guess("jim")

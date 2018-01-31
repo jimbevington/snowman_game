@@ -17,17 +17,27 @@ class Game
     return guess == @hidden_word.word
   end
 
-  # ... in midst of building
+  def guess_letter(guess)
+    if @hidden_word.true_false(guess)
+      @hidden_word.update_display(guess)
+    else
+      subtract_player_life
+    end
+    add_guess_to_guessed_letters(guess)
+  end
+
+  # call different functions based on guess
   def parse_guess(guess)
     if is_a_word?(guess)
       if correct_word?(guess) # if it is a word, is it the correct word?
         @hidden_word.reveal_word # if so, reveal the word
       else
-        subtract_player_life()
+        subtract_player_life() # call other function to dock life
       end
+    else # if not a word
+      guess_letter(guess)
     end
   end
-
 
   # ADD TO GUESSED LETTERS
   def add_guess_to_guessed_letters(letter)
