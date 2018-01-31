@@ -2,6 +2,7 @@ require('minitest/autorun')
 require('minitest/rg')
 
 require_relative('../game.rb')
+require_relative('../player.rb')
 
 class GameTest < MiniTest::Test
 
