@@ -8,4 +8,5 @@ class HiddenWord
   def true_false(letter)
     return @word.include?(letter)
   end
+  
 end
