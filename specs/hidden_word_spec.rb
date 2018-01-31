@@ -13,9 +13,6 @@ class HiddenWordTest < MiniTest::Test
     assert_equal("hi there", @hidden_word.word)
   end
 
-  # def test_display__none
-  #   assert_equal("", @hidden_word.display)
-  # end
 
 def test_letter_true_false
   assert_equal(true, @hidden_word.true_false("h"))
