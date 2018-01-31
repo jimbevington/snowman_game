@@ -8,7 +8,9 @@ class GameTest < MiniTest::Test
 
   def setup
     @player = Player.new("Chris")
-    @game = Game.new(@player, "Political Correctness")
+    @hidden_word = HiddenWord.new("Political Correctness")
+    @game = Game.new(@player, @hidden_word)
+
 
   end
 
@@ -17,6 +19,10 @@ class GameTest < MiniTest::Test
   end
 
   def test_game_has_hidden_word
-    assert_equal("Political Correctness", @game.hidden_word)
+    assert_equal(@hidden_word, @game.hidden_word)
+  end
+
+  def test_game_guessed_letters__none
+    assert_equal([], @game.guessed_letters)
   end
 end
