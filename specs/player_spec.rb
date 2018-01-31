@@ -20,4 +20,5 @@ class PlayerTest < MiniTest::Test
   def test_guess_letter
     assert_equal("q", @player.guess("q"))
   end
+  
 end

@@ -4,4 +4,8 @@ class HiddenWord
     @word = word
     @display = ""
   end
+
+  def true_false(letter)
+    return @word.include?(letter)
+  end
 end
