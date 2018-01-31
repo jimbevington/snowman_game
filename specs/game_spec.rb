@@ -74,6 +74,8 @@ class GameTest < MiniTest::Test
     assert_equal(5, @player.lives)
   end
 
+
+
   # PASS A LETTER TO HIDDEN WORD
   def test_subtract_player_life
     @game.subtract_player_life
@@ -106,5 +108,34 @@ class GameTest < MiniTest::Test
   assert_equal(true, @game.lost?)
   end
 
+  # HERE I'm CHECKING IF PARSE WILL KICK OFF THE RIGHT EVENT CHAIN
+  # quite verbose
+  def test_play_game_with_parse__full_word__true
+    @game.parse_guess("hi there")
+    assert_equal(true, @game.won?)
+  end
+
+  def test_play_game_with_parse__full_word__true
+    @game.parse_guess("you there")
+    assert_equal(false, @game.won?)
+  end
+
+  def test_play_game_with_parse__letters__true
+    @game.parse_guess("e")
+    @game.parse_guess("r")
+    @game.parse_guess("h")
+    @game.parse_guess("i")
+    @game.parse_guess("t")
+    assert_equal(true, @game.won?)
+  end
+
+  def test_play_game_with_parse__letters__false
+    @game.parse_guess("e")
+    @game.parse_guess("r")
+    @game.parse_guess("h")
+    @game.parse_guess("i")
+    @game.parse_guess("l")
+    assert_equal(false, @game.won?)
+  end
 
 end

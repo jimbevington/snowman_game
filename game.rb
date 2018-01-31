@@ -39,15 +39,17 @@ class Game
     end
   end
 
+  def play
+    # but how do i test getting input
+    # check if game is won?
+    # get guess
+    # call parse guess
+  end
+
   # ADD TO GUESSED LETTERS
   def add_guess_to_guessed_letters(letter)
     @guessed_letters.push(letter)
   end
-
-  # PASS A LETTER TO HIDDEN WORD -- !!!!!! change
-  # def pass_guess_to_hidden_word(guess)
-  #   @hidden_word.evaluate_guess(guess)
-  # end
 
   # BE ABLE TO SUBTRACT FROM PLAYER LIFE
   def subtract_player_life
