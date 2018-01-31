@@ -38,7 +38,26 @@ class GameTest < MiniTest::Test
     assert_equal(["t"], @game.guessed_letters)
   end
 
-  #
+  def test_is_a_word__true
+    assert_equal(true, @game.is_a_word?("hi there"))
+  end
+
+  def test_is_a_word__false
+    assert_equal(false, @game.is_a_word?("h"))
+  end
+
+  def test_correct_word__true
+    assert_equal(true, @game.correct_word?("hi there"))
+  end
+
+  def test_correct_word__false
+    assert_equal(false, @game.correct_word?("cheese"))
+  end
+
+  def test_parse_guess
+    assert_equal(true, @game.parse_guess("hi there"))
+  end
+
   # PASS A LETTER TO HIDDEN WORD
 
   def test_game_won__false

@@ -9,9 +9,19 @@ class Game
     @guessed_letters = []
   end
 
-  # def is_a_word?(guess)
-  #   guess.length > 1
-  # end
+  def is_a_word?(guess)
+    guess.length > 1
+  end
+
+  def correct_word?(guess)
+    return guess == @hidden_word.word
+  end
+
+  def parse_guess(guess)
+    if is_a_word?(guess)
+      return correct_word?(guess)
+    end
+  end
 
   # def evaluate_guess(guess)
   #   if is_a_word?(guess)
