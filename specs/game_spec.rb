@@ -51,4 +51,35 @@ class GameTest < MiniTest::Test
 
   end
 
+  def test_game_lost__false
+  assert_equal(false, @game.lost?)
+  end
+  # we need to test if the game is lost_true
+
+  def test_win_game__true
+    @game.pass_guess_to_hidden_word("h")
+    @game.pass_guess_to_hidden_word("i")
+    @game.pass_guess_to_hidden_word("t")
+    @game.pass_guess_to_hidden_word("h")
+    @game.pass_guess_to_hidden_word("e")
+    @game.pass_guess_to_hidden_word("r")
+    @game.pass_guess_to_hidden_word("e")
+
+    assert_equal(true, @game.won?)
+
+  end
+
+  def test_win_game__false
+    @game.pass_guess_to_hidden_word("h")
+    @game.pass_guess_to_hidden_word("i")
+    @game.pass_guess_to_hidden_word("t")
+    @game.pass_guess_to_hidden_word("h")
+    @game.pass_guess_to_hidden_word("e")
+    @game.pass_guess_to_hidden_word("r")
+
+
+    assert_equal(false, @game.won?)
+
+  end
+
 end

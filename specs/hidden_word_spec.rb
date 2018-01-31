@@ -30,4 +30,9 @@ def test_update_display
   assert_equal("h* *h***", @hidden_word.update_display("h"))
 end
 
+def test_is_a_word__true
+  @game.pass_guess_to_hidden_word("hi there")
+  assert_equal(true, @hidden_word.is_a_word?)
+end
+
 end

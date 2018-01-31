@@ -7,8 +7,8 @@ class Game
     @guessed_letters = []
   end
 
-  def pass_guess_to_hidden_word(letter)
-    @hidden_word.true_false(letter)
+  def pass_guess_to_hidden_word(guess)
+    @hidden_word.is_a_word?(guess)
   end
 
   def add_guess_to_guessed_letters(letter)
@@ -21,4 +21,14 @@ class Game
     end
   end
 
+  def won?
+
+    unless @hidden_word.word.include?("*")
+      return true
+    end
+  end
+
+def lost?
+ player.lives == 0
+end
 end

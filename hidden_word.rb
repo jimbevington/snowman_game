@@ -31,4 +31,6 @@ class HiddenWord
     return @display
   end
 
+
+
 end
