@@ -36,4 +36,19 @@ class GameTest < MiniTest::Test
     @game.add_guess_to_guessed_letters("t")
     assert_equal(["t"], @game.guessed_letters)
   end
+
+  def test_test_guess
+    @game.test_guess(@hidden_word.true_false("a"))
+    assert_equal(5, @player.lives)
+  end
+
+  def test_game_won
+    new_word = HiddenWord.new("a")
+    new_game = Game.new(@player, new_word)
+    new_word.update_display("a")
+
+    assert_equal(true, new_game.won?)
+
+  end
+
 end

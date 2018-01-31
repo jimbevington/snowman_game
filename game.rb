@@ -15,4 +15,10 @@ class Game
     @guessed_letters.push(letter)
   end
 
+  def test_guess(result)
+    unless result
+      @player.lose_life
+    end
+  end
+
 end
