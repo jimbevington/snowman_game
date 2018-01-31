@@ -20,6 +20,10 @@ class HiddenWordTest < MiniTest::Test
     assert_equal("hi there", @hidden_word.word)
   end
 
+  def test_set_word
+    assert_equal("new one", @hidden_word.word = "new one")
+  end
+
   def test_display_hide_word
     assert_equal("** *****", @hidden_word.display)
   end

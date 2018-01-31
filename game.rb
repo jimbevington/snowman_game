@@ -1,4 +1,3 @@
-
 class Game
 
   attr_reader :player, :hidden_word, :guessed_letters
@@ -39,13 +38,6 @@ class Game
     end
   end
 
-  def play
-    # but how do i test getting input
-    # check if game is won?
-    # get guess
-    # call parse guess
-  end
-
   # ADD TO GUESSED LETTERS
   def add_guess_to_guessed_letters(letter)
     @guessed_letters.push(letter)
@@ -69,5 +61,39 @@ class Game
    @player.lives == 0
   end
 
+  def get_guesses()
+    # Display Info
+    p "#{@hidden_word.display}   -   Your guesses: #{guessed_letters}"
+    # Request some input
+    p "Guess a letter:"
+    # Assign input to variable - UNTESTED!, HOW DO I TEST A GETS.CHOMP???
+    guess = gets.chomp.downcase # make sure its all downcase
+    # Enter guess into game logic
+    parse_guess(guess)
+  end
+
+  def get_hidden_word()
+    p "Enter a word to hide."
+    @hidden_word.word = gets.chomp.downcase # assign the input to hidden_word
+  end
+
+  # INCOMPLETE, won't pass tests
+  # def play
+  #
+  #   get_hidden_word() # get a hidden word
+  #
+  #   # keep asking for guesses until the game is won or lost
+  #   while won? == false || lost? == false
+  #     get_guesses
+  #   end
+  #
+  #   # when won/lost, let user know
+  #   if won?
+  #     p "You Win!"
+  #   else
+  #     p "You Lose!"
+  #   end
+  #
+  # end
 
 end

@@ -109,7 +109,7 @@ class GameTest < MiniTest::Test
   end
 
   # HERE I'm CHECKING IF PARSE WILL KICK OFF THE RIGHT EVENT CHAIN
-  # quite verbose
+  # quite verbose, probably don't need all these
   def test_play_game_with_parse__full_word__true
     @game.parse_guess("hi there")
     assert_equal(true, @game.won?)
@@ -137,5 +137,39 @@ class GameTest < MiniTest::Test
     @game.parse_guess("l")
     assert_equal(false, @game.won?)
   end
+
+  def test_player_can_lose_all_lives_with_parse
+    @game.parse_guess("o")
+    @game.parse_guess("y")
+    @game.parse_guess("x")
+    @game.parse_guess("1")
+    @game.parse_guess("l")
+    @game.parse_guess("u")
+    assert_equal(0, @player.lives)
+    assert_equal(false, @game.won?)
+    assert_equal(true, @game.lost?)
+  end
+
+  # answer is "hi there", you can get it in 5 guesses, give it a go
+  def test_get_guesses
+    @game.get_guesses()
+    @game.get_guesses()
+    @game.get_guesses()
+    @game.get_guesses()
+    @game.get_guesses()
+    assert_equal(true, @game.won?)
+  end
+
+  # THIS ONE WORKS IF UNCOMMENTED, BUT YOU NEED TO TYPE "new one" WHEN
+  # ASKED TO ENTER A HIDDEN WORD
+  # def test_get_hidden_word
+  #   @game.get_hidden_word()
+  #   assert_equal("new one", @hidden_word.word)
+  # end
+
+  # # not finished
+  # def test_play__win
+  #   assert_equal("You Win!", @game.play)
+  # end
 
 end

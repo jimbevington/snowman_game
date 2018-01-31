@@ -1,6 +1,7 @@
 class HiddenWord
 
-  attr_reader :word, :display
+  attr_accessor :word
+  attr_reader :display
 
   def initialize(word)
     @word = word
