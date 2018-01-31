@@ -6,12 +6,6 @@ class HiddenWord
 
   end
 
-  def is_a_word?(guess)
-
-    guess.length > 1
-
-  end
-
   def true_false(letter)
     return @word.include?(letter)
   end
@@ -37,14 +31,14 @@ class HiddenWord
     return @display
   end
 
-def evaluate_guess(guess)
-  if is_a_word?(guess)
-    if guess == @word
-      @display = @word
-    else
-      @player.lose_life
-    end
-  end
-end
+# def evaluate_guess(guess)
+#   if is_a_word?(guess)
+#     if guess == @word
+#       @display = @word
+#     else
+#       @game.player_lose_life
+#     end
+#   end
+# end
 
 end

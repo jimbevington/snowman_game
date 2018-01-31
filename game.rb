@@ -6,6 +6,22 @@ class Game
     @hidden_word = hidden_word
     @guessed_letters = []
   end
+  
+  def is_a_word?(guess)
+
+    guess.length > 1
+
+  end
+
+  def evaluate_guess(guess)
+    if is_a_word?(guess)
+      if guess == @word
+        @display = @word
+      else
+        @game.player_lose_life
+      end
+    end
+  end
 
   def pass_guess_to_hidden_word(guess)
     @hidden_word.evaluate_guess(guess)

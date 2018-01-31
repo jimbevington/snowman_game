@@ -56,6 +56,20 @@ class GameTest < MiniTest::Test
 
   end
 
+  # def test_is_a_word__true
+  #   assert_equal(true, is_a_word?("hi there"))
+  # end
+  #
+  # def test_is_a_word__false
+  #   assert_equal(false, is_a_word?("h"))
+  # end
+
+def test_evaluate_guess__word__correct_word
+  @game.evaluate_guess("hi there")
+
+  assert_equal(true, @game.won?)
+end
+
   def test_game_lost__false
   assert_equal(false, @game.lost?)
   end
