@@ -11,5 +11,8 @@ class Game
     @hidden_word.true_false(letter)
   end
 
+  def add_guess_to_guessed_letters(letter)
+    @guessed_letters.push(letter)
+  end
 
 end
