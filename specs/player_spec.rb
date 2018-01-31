@@ -17,8 +17,15 @@ class PlayerTest < MiniTest::Test
     assert_equal(6, @player.lives)
   end
 
-  def test_guess_letter
-    assert_equal("q", @player.guess("q"))
+  # def test_guess_letter
+  #   assert_equal("q", @player.guess("q"))
+  # end
+
+  def test_lose_life
+    @player.lose_life()
+    assert_equal(5, @player.lives)
   end
-  
+
+
+
 end

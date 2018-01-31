@@ -6,7 +6,8 @@ class Player
     @lives = 6
   end
 
-  # def guess(letter)
-  #   return letter
-  # end
+  def lose_life
+    @lives -= 1
+  end
+
 end
