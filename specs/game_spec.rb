@@ -38,14 +38,19 @@ class GameTest < MiniTest::Test
     assert_equal(["t"], @game.guessed_letters)
   end
 
+  #
   # PASS A LETTER TO HIDDEN WORD
-  # CHECK IF GAME WON
-  # CHECK IF GAME LOST
 
-def test_game_won__false
-  # something in here
-  assert_equal(false, @game.won?)
-end
+  def test_game_won__false
+    assert_equal(false, @game.won?)
+  end
+
+  def test_game_won__true
+    word = HiddenWord.new("aaa")
+    game = Game.new("Chris", word)
+    word.update_display("a") # provide only present letter
+    assert_equal(true, game.won?)
+  end
 
   def test_game_lost__false
   assert_equal(false, @game.lost?)
