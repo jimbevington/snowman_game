@@ -42,10 +42,10 @@ class GameTest < MiniTest::Test
   # CHECK IF GAME WON
   # CHECK IF GAME LOST
 
-# def test_game_won__true
-#   # something in here
-#   assert_equal(true, @game.won?)
-# end
+def test_game_won__false
+  # something in here
+  assert_equal(false, @game.won?)
+end
 
   def test_game_lost__false
   assert_equal(false, @game.lost?)

@@ -40,6 +40,7 @@ class Game
     unless @hidden_word.display.include?("*")
       return true
     end
+    return false # return false if display includes *
   end
 
   # CHECK IF GAME IS LOST
