@@ -1,12 +1,15 @@
 require('minitest/autorun')
 require('minitest/rg')
 
+
+require_relative('../game.rb')
 require_relative('../hidden_word.rb')
 
 
 class HiddenWordTest < MiniTest::Test
   def setup
     @hidden_word = HiddenWord.new("hi there")
+    @game = Game.new(@player, @hidden_word)
   end
 
   def test_has_word
@@ -31,8 +34,22 @@ def test_update_display
 end
 
 def test_is_a_word__true
-  @game.pass_guess_to_hidden_word("hi there")
-  assert_equal(true, @hidden_word.is_a_word?)
+  assert_equal(true, @hidden_word.is_a_word?("hi there"))
 end
+
+def test_is_a_word__false
+  assert_equal(false, @hidden_word.is_a_word?("h"))
+end
+
+# def test_evaluate_guess__word
+#   result = @game.pass_guess_to_hidden_word("hi there")
+#   assert_equal(true, result)
+# end
+
+def test_evaluate_guess__correct_word
+   @game.pass_guess_to_hidden_word("hi there")
+  assert_equal(true, @game.won?)
+end
+
 
 end

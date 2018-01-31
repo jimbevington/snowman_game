@@ -42,6 +42,11 @@ class GameTest < MiniTest::Test
     assert_equal(5, @player.lives)
   end
 
+  def test_player_lose_life
+    @game.player_lose_life
+    assert_equal(5, @player.lives)
+  end
+
   def test_game_won
     new_word = HiddenWord.new("a")
     new_game = Game.new(@player, new_word)

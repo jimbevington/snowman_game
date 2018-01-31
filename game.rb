@@ -8,7 +8,7 @@ class Game
   end
 
   def pass_guess_to_hidden_word(guess)
-    @hidden_word.is_a_word?(guess)
+    @hidden_word.evaluate_guess(guess)
   end
 
   def add_guess_to_guessed_letters(letter)
@@ -30,5 +30,9 @@ class Game
 
 def lost?
  player.lives == 0
+end
+
+def player_lose_life
+  @player.lose_life
 end
 end
