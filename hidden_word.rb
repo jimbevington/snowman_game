@@ -10,8 +10,25 @@ class HiddenWord
     return @word.include?(letter)
   end
 
-  # def hide_word
-  #   @display = @word.tr("a-z", "*")
-  # end
+  def get_indices(letter)
+    word_array = @word.split(//)
+    index_array = []
+    count = 0
+
+    for l in word_array
+      if l == letter
+        index_array.push(count)
+      end
+      count += 1
+    end
+    return index_array
+  end
+
+  def update_display(letter)
+    for index in self.get_indices(letter)
+      @display[index] = letter
+    end
+    return @display
+  end
 
 end

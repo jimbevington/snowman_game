@@ -21,4 +21,13 @@ end
 def test_hide_word
   assert_equal("** *****", @hidden_word.display)
 end
+
+def test_get_letter_indices
+  assert_equal([0, 4], @hidden_word.get_indices("h"))
+end
+
+def test_update_display
+  assert_equal("h* *h***", @hidden_word.update_display("h"))
+end
+
 end
