@@ -7,13 +7,17 @@ require_relative('../hidden_word.rb')
 
 class GameTest < MiniTest::Test
 
+  ### SETUP ############################################
+
   def setup
     @player = Player.new("Chris")
     @hidden_word = HiddenWord.new("hi there")
     @game = Game.new(@player, @hidden_word)
-
-
   end
+
+  ### TESTS ############################################
+
+  ### test parameters ##################################
 
   def test_game_has_player
     assert_equal(@player, @game.player)
@@ -27,78 +31,36 @@ class GameTest < MiniTest::Test
     assert_equal([], @game.guessed_letters)
   end
 
-  def test_game_pass_guess_to_hidden_word
-    assert_equal(true, @game.pass_guess_to_hidden_word("h"))
-    assert_equal(false, @game.pass_guess_to_hidden_word("a"))
-  end
+  ### test methods ##################################
 
   def test_add_guess_to_guessed_letters
     @game.add_guess_to_guessed_letters("t")
     assert_equal(["t"], @game.guessed_letters)
   end
 
-  def test_test_guess
-    @game.test_guess(@hidden_word.true_false("a"))
-    assert_equal(5, @player.lives)
-  end
+  # PASS A LETTER TO HIDDEN WORD
+  # CHECK IF GAME WON
+  # CHECK IF GAME LOST
 
-  def test_player_lose_life
-    @game.player_lose_life
-    assert_equal(5, @player.lives)
-  end
-
-  def test_game_won
-    new_word = HiddenWord.new("a")
-    new_game = Game.new(@player, new_word)
-    new_word.update_display("a")
-
-    assert_equal(true, new_game.won?)
-
-  end
-
-  # def test_is_a_word__true
-  #   assert_equal(true, is_a_word?("hi there"))
-  # end
-  #
-  # def test_is_a_word__false
-  #   assert_equal(false, is_a_word?("h"))
-  # end
-
-def test_evaluate_guess__word__correct_word
-  @game.evaluate_guess("hi there")
-
-  assert_equal(true, @game.won?)
-end
+# def test_game_won__true
+#   # something in here
+#   assert_equal(true, @game.won?)
+# end
 
   def test_game_lost__false
   assert_equal(false, @game.lost?)
   end
-  # we need to test if the game is lost_true
 
-  def test_win_game__true
-    @game.pass_guess_to_hidden_word("h")
-    @game.pass_guess_to_hidden_word("i")
-    @game.pass_guess_to_hidden_word("t")
-    @game.pass_guess_to_hidden_word("h")
-    @game.pass_guess_to_hidden_word("e")
-    @game.pass_guess_to_hidden_word("r")
-    @game.pass_guess_to_hidden_word("e")
-
-    assert_equal(true, @game.won?)
-
+  # can shorten this
+  def test_game_lost__true
+  @player.lose_life
+  @player.lose_life
+  @player.lose_life
+  @player.lose_life
+  @player.lose_life
+  @player.lose_life
+  assert_equal(true, @game.lost?)
   end
 
-  def test_win_game__false
-    @game.pass_guess_to_hidden_word("h")
-    @game.pass_guess_to_hidden_word("i")
-    @game.pass_guess_to_hidden_word("t")
-    @game.pass_guess_to_hidden_word("h")
-    @game.pass_guess_to_hidden_word("e")
-    @game.pass_guess_to_hidden_word("r")
-
-
-    assert_equal(false, @game.won?)
-
-  end
 
 end

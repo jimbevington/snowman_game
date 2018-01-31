@@ -1,54 +1,51 @@
 
 class Game
+
   attr_reader :player, :hidden_word, :guessed_letters
+
   def initialize(player, hidden_word)
     @player = player
     @hidden_word = hidden_word
     @guessed_letters = []
   end
-  
-  def is_a_word?(guess)
 
-    guess.length > 1
+  # def is_a_word?(guess)
+  #   guess.length > 1
+  # end
 
-  end
+  # def evaluate_guess(guess)
+  #   if is_a_word?(guess)
+  #     if guess == @word
+  #       @display = @word
+  #     else
+  #       @game.player_lose_life
+  #     end
+  #   end
+  # end
 
-  def evaluate_guess(guess)
-    if is_a_word?(guess)
-      if guess == @word
-        @display = @word
-      else
-        @game.player_lose_life
-      end
-    end
-  end
-
-  def pass_guess_to_hidden_word(guess)
-    @hidden_word.evaluate_guess(guess)
-  end
-
+  # ADD TO GUESSED LETTERS
   def add_guess_to_guessed_letters(letter)
     @guessed_letters.push(letter)
   end
 
-  def test_guess(result)
-    unless result
-      @player.lose_life
-    end
-  end
+  # PASS A LETTER TO HIDDEN WORD -- !!!!!! change
+  # def pass_guess_to_hidden_word(guess)
+  #   @hidden_word.evaluate_guess(guess)
+  # end
 
+  # BE ABLE TO SUBTRACT FROM PLAYER LIFE
+
+  # CHECK IF GAME IS WON
   def won?
-
-    unless @hidden_word.word.include?("*")
+    unless @hidden_word.display.include?("*")
       return true
     end
   end
 
-def lost?
- player.lives == 0
-end
+  # CHECK IF GAME IS LOST
+  def lost?
+   @player.lives == 0
+  end
 
-def player_lose_life
-  @player.lose_life
-end
+
 end
