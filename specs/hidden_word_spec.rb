@@ -13,4 +13,8 @@ class HiddenWordTest < MiniTest::Test
     assert_equal("Political Correctness", @hidden_word.word)
   end
 
+  def test_display__none
+    assert_equal("", @hidden_word.display)
+  end
+
 end
