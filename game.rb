@@ -6,4 +6,8 @@ class Game
     @hidden_word = hidden_word
     @guessed_letters = []
   end
+
+  def pass_guess(letter)
+    @hidden_word.true_false(letter)
+  end
 end

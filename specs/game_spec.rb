@@ -3,6 +3,7 @@ require('minitest/rg')
 
 require_relative('../game.rb')
 require_relative('../player.rb')
+require_relative('../hidden_word.rb')
 
 class GameTest < MiniTest::Test
 
