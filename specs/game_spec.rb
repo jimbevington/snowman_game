@@ -54,11 +54,17 @@ class GameTest < MiniTest::Test
     assert_equal(false, @game.correct_word?("cheese"))
   end
 
+  # ... in midst of building
   def test_parse_guess
-    assert_equal(true, @game.parse_guess("hi there"))
+    @game.parse_guess("jim")
+    assert_equal(5, @player.lives)
   end
 
   # PASS A LETTER TO HIDDEN WORD
+  def test_subtract_player_life
+    @game.subtract_player_life
+    assert_equal(5, @player.lives)
+  end
 
   def test_game_won__false
     assert_equal(false, @game.won?)

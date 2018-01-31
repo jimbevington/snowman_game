@@ -39,4 +39,8 @@ class HiddenWord
     return @display
   end
 
+  def reveal_word
+    @display = @word
+  end
+
 end

@@ -38,4 +38,9 @@ class HiddenWordTest < MiniTest::Test
     assert_equal("h* *h***", @hidden_word.update_display("h"))
   end
 
+  def test_reveal_word
+    @hidden_word.reveal_word
+    assert_equal("hi there", @hidden_word.display)
+  end
+
 end
