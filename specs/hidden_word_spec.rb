@@ -9,4 +9,8 @@ class HiddenWordTest < MiniTest::Test
     @hidden_word = HiddenWord.new("Political Correctness")
   end
 
+  def test_has_word
+    assert_equal("Political Correctness", @hidden_word.word)
+  end
+
 end
