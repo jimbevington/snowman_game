@@ -150,15 +150,22 @@ class GameTest < MiniTest::Test
     assert_equal(true, @game.lost?)
   end
 
-  # answer is "hi there", you can get it in 5 guesses, give it a go
-  def test_get_guesses
-    @game.get_guesses()
-    @game.get_guesses()
-    @game.get_guesses()
-    @game.get_guesses()
-    @game.get_guesses()
-    assert_equal(true, @game.won?)
+  def test_format_guessed_letters
+    @game.add_guess_to_guessed_letters("h")
+    @game.add_guess_to_guessed_letters("t")
+    assert_equal("h, t", @game.display_guessed_letters)
   end
+  #
+  #
+  # # answer is "hi there", you can get it in 5 guesses, give it a go
+  # def test_get_guesses
+  #   @game.get_guesses()
+  #   @game.get_guesses()
+  #   @game.get_guesses()
+  #   @game.get_guesses()
+  #   @game.get_guesses()
+  #   assert_equal(true, @game.won?)
+  # end
 
   # THIS ONE WORKS IF UNCOMMENTED, BUT YOU NEED TO TYPE "new one" WHEN
   # ASKED TO ENTER A HIDDEN WORD

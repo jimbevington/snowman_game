@@ -61,6 +61,12 @@ class Game
    @player.lives == 0
   end
 
+  def display_guessed_letters
+    # concat this with an ennumerable
+    p @guessed_letters
+  end
+
+
   def get_guesses()
     # Display Info
     p "#{@hidden_word.display}   -   Your guesses: #{guessed_letters}"
