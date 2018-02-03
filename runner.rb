@@ -1,4 +1,3 @@
-require('pry')
 
 require_relative('./game.rb')
 require_relative('./hidden_word.rb')
@@ -10,9 +9,10 @@ game = Game.new(player, hidden_word)
 
 game.get_hidden_word()
 
+puts %x{clear}
+
 while game.inplay do
 
-  # binding.pry
   # Display Info
   p "#{hidden_word.display}"
   game.display_guessed_letters()
