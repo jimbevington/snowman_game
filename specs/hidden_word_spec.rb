@@ -47,4 +47,12 @@ class HiddenWordTest < MiniTest::Test
     assert_equal("hi there", @hidden_word.display)
   end
 
+  def test_add_word_to_display
+    hidden_word = HiddenWord.new("")
+    hidden_word.word = "hello"
+    assert_equal("", hidden_word.display) # display still empty
+    hidden_word.add_word_to_display
+    assert_equal("*****", hidden_word.display)
+  end
+
 end

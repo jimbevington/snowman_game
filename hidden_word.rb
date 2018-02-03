@@ -5,7 +5,11 @@ class HiddenWord
 
   def initialize(word)
     @word = word
-    @display =  @word.tr("a-z", "*")
+    @display = @word.tr("a-z", "*")
+  end
+
+  def add_word_to_display
+    @display = @word.tr("a-z", "*")
   end
 
   # CHECK IF LETTER IS IN WORD

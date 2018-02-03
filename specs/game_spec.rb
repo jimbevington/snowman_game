@@ -83,18 +83,19 @@ class GameTest < MiniTest::Test
   end
 
   def test_game_won__false
-    assert_equal(false, @game.won?)
+    assert_equal(false, @game.won)
   end
 
   def test_game_won__true
     word = HiddenWord.new("aaa")
     game = Game.new("Chris", word)
     word.update_display("a") # provide only present letter
-    assert_equal(true, game.won?)
+    game.check_won?
+    assert_equal(true, game.won)
   end
 
   def test_game_lost__false
-  assert_equal(false, @game.lost?)
+  assert_equal(false, @game.lost)
   end
 
   # can shorten this
@@ -105,19 +106,22 @@ class GameTest < MiniTest::Test
   @player.lose_life
   @player.lose_life
   @player.lose_life
-  assert_equal(true, @game.lost?)
+  @game.check_lost?
+  assert_equal(true, @game.lost)
   end
-
+  #
   # HERE I'm CHECKING IF PARSE WILL KICK OFF THE RIGHT EVENT CHAIN
   # quite verbose, probably don't need all these
   def test_play_game_with_parse__full_word__true
     @game.parse_guess("hi there")
-    assert_equal(true, @game.won?)
+    @game.check_won?
+    assert_equal(true, @game.won)
   end
 
   def test_play_game_with_parse__full_word__true
     @game.parse_guess("you there")
-    assert_equal(false, @game.won?)
+    @game.check_won?
+    assert_equal(false, @game.won)
   end
 
   def test_play_game_with_parse__letters__true
@@ -126,16 +130,18 @@ class GameTest < MiniTest::Test
     @game.parse_guess("h")
     @game.parse_guess("i")
     @game.parse_guess("t")
-    assert_equal(true, @game.won?)
+    @game.check_won?
+    assert_equal(true, @game.won)
   end
-
+  #
   def test_play_game_with_parse__letters__false
     @game.parse_guess("e")
     @game.parse_guess("r")
     @game.parse_guess("h")
     @game.parse_guess("i")
     @game.parse_guess("l")
-    assert_equal(false, @game.won?)
+    @game.check_won?
+    assert_equal(false, @game.won)
   end
 
   def test_player_can_lose_all_lives_with_parse
@@ -145,9 +151,10 @@ class GameTest < MiniTest::Test
     @game.parse_guess("1")
     @game.parse_guess("l")
     @game.parse_guess("u")
+    @game.check_won_lost?
     assert_equal(0, @player.lives)
-    assert_equal(false, @game.won?)
-    assert_equal(true, @game.lost?)
+    assert_equal(false, @game.won)
+    assert_equal(true, @game.lost)
   end
 
   def test_format_guessed_letters
@@ -155,7 +162,7 @@ class GameTest < MiniTest::Test
     @game.add_guess_to_guessed_letters("t")
     assert_equal("h, t", @game.display_guessed_letters)
   end
-  #
+  # #
   #
   # # answer is "hi there", you can get it in 5 guesses, give it a go
   # def test_get_guesses
@@ -164,7 +171,7 @@ class GameTest < MiniTest::Test
   #   @game.get_guesses()
   #   @game.get_guesses()
   #   @game.get_guesses()
-  #   assert_equal(true, @game.won?)
+  #   assert_equal(true, @game.won)
   # end
 
   # THIS ONE WORKS IF UNCOMMENTED, BUT YOU NEED TO TYPE "new one" WHEN

@@ -1,11 +1,14 @@
 class Game
 
-  attr_reader :player, :hidden_word, :guessed_letters
+  attr_reader :player, :hidden_word, :guessed_letters, :won, :lost, :inplay
 
   def initialize(player, hidden_word)
     @player = player
     @hidden_word = hidden_word
     @guessed_letters = []
+    @won = false
+    @lost = false
+    @inplay = true
   end
 
   def is_a_word?(guess)
@@ -49,57 +52,43 @@ class Game
   end
 
   # CHECK IF GAME IS WON
-  def won?
+  def check_won?
     unless @hidden_word.display.include?("*")
-      return true
+      @won = true
+      @inplay = false
     end
-    return false # return false if display includes *
   end
 
   # CHECK IF GAME IS LOST
-  def lost?
-   @player.lives == 0
+  def check_lost?
+   if @player.lives == 0
+     @lost = true
+     @inplay = false
+   end
+  end
+
+  def check_won_lost?
+    check_won?
+    check_lost?
   end
 
   def display_guessed_letters
     # concat this with an ennumerable
-    p @guessed_letters
+    p "Guesses: #{@guessed_letters.join(", ")}"
   end
 
-
-  def get_guesses()
-    # Display Info
-    p "#{@hidden_word.display}   -   Your guesses: #{guessed_letters}"
-    # Request some input
+  def get_guess()
     p "Guess a letter:"
-    # Assign input to variable - UNTESTED!, HOW DO I TEST A GETS.CHOMP???
-    guess = gets.chomp.downcase # make sure its all downcase
-    # Enter guess into game logic
-    parse_guess(guess)
+    return guess = gets.chomp.downcase # make sure its all downcase
   end
 
   def get_hidden_word()
     p "Enter a word to hide."
     @hidden_word.word = gets.chomp.downcase # assign the input to hidden_word
+    @hidden_word.add_word_to_display
+    return nil
   end
 
-  # INCOMPLETE, won't pass tests
-  # def play
-  #
-  #   get_hidden_word() # get a hidden word
-  #
-  #   # keep asking for guesses until the game is won or lost
-  #   while won? == false || lost? == false
-  #     get_guesses
-  #   end
-  #
-  #   # when won/lost, let user know
-  #   if won?
-  #     p "You Win!"
-  #   else
-  #     p "You Lose!"
-  #   end
-  #
-  # end
+
 
 end
