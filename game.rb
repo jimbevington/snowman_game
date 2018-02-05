@@ -8,7 +8,6 @@ class Game
     @guessed_letters = []
     @won = false
     @lost = false
-    @inplay = true
   end
 
   def is_a_word?(guess)
@@ -54,8 +53,7 @@ class Game
   # CHECK IF GAME IS WON
   def check_won?
     unless @hidden_word.display.include?("*")
-      @won = true
-      @inplay = false
+      @won = true      
     end
   end
 
@@ -63,7 +61,6 @@ class Game
   def check_lost?
    if @player.lives == 0
      @lost = true
-     @inplay = false
    end
   end
 

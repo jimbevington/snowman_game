@@ -7,11 +7,13 @@ player = Player.new("Jim")
 hidden_word = HiddenWord.new("")
 game = Game.new(player, hidden_word)
 
+puts %x{clear} # clear screen
+
 game.get_hidden_word()
 
-while game.inplay do
+until game.won || game.lost do
 
-  puts %x{clear} # clear terminal screen
+  puts %x{clear} # clear screen
   # Display Info
   p "#{hidden_word.display}"
   game.display_guessed_letters()
@@ -21,11 +23,11 @@ while game.inplay do
   game.check_won_lost?
 
   if game.won
-    puts %x{clear} # clear terminal screen
+    puts %x{clear} # clear screen
     p "#{hidden_word.display.upcase}"
     p "Congratulations! You WIN!!!"
   elsif game.lost
-    puts %x{clear} # clear terminal screen
+    puts %x{clear} # clear screen
     p "Oh dear, you LOSE!!!"
   end
 
