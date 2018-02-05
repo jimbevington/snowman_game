@@ -42,7 +42,10 @@ class Game
 
   # ADD TO GUESSED LETTERS
   def add_guess_to_guessed_letters(letter)
-    @guessed_letters.push(letter)
+    # only add letter if its a new guess
+    unless @guessed_letters.include?(letter)
+      @guessed_letters.push(letter)
+    end
   end
 
   # BE ABLE TO SUBTRACT FROM PLAYER LIFE
@@ -53,7 +56,7 @@ class Game
   # CHECK IF GAME IS WON
   def check_won?
     unless @hidden_word.display.include?("*")
-      @won = true      
+      @won = true
     end
   end
 
